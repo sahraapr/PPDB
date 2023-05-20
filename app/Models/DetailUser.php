@@ -19,7 +19,6 @@ class DetailUser extends Model
         'nohp_ibu',
         'role',
         'jk',
-        'progress',
         'tgl_lahir',
         'tempat_lahir',
         'agama',

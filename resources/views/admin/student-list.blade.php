@@ -37,8 +37,8 @@
                                 
                                 @foreach($data_user as $key)
                                     <td>{{ $key->asal_sekolah }}</td>
-                                    <td>{{ $key->nohp }}</td>
                                     <td>{{ $key->nisn }}</td>
+                                    <td>{{ $key->nohp }}</td>
                                     <td>{{ $key->nohp_ayah }}</td>
                                     <td>{{ $key->nohp_ibu }}</td>
                                 @endforeach

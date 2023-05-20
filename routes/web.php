@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PenerimaanController;
 use App\Models\User;
 
 /*
@@ -31,6 +32,14 @@ Route::middleware(['login', 'role:admin'])->group(function () {
   Route::get('/student-list', [AdminController::class, 'indexList'])->name('indexList');
   Route::post('/validateStore/{payment:user_id}', [AdminController::class, 'validateStore'])->name('validateStore');
   Route::post('/rejected/{payment:user_id}', [AdminController::class, 'rejected'])->name('rejected');
+  Route::resource('pertanyaan-wawancara', PenerimaanController::class);
+  Route::get('jawabansiswa', [PenerimaanController::class, 'wawancarasiswa'])->name('jawabansiswa');
+
+  Route::get('detailwawancara/{id}/{id_user}/{pertanyaan}', [PenerimaanController::class, 'detailwawancara'])->name('detailwawancara');
+
+  Route::get('approvesiswa/{pertanyaan}', [PenerimaanController::class, 'approvesiswa'])->name('approvesiswa');
+
+
 });
 
 Route::middleware(['login', 'role:user'])->group(function () {
@@ -39,7 +48,15 @@ Route::middleware(['login', 'role:user'])->group(function () {
 
   Route::get('data-diri', [AdminController::class, 'datadiri'])->name('data-diri');
 
-});
+  Route::get('uploadberkas/{id}', [PenerimaanController::class, 'uploadberkas'])->name('uploadberkas');
+
+  Route::get('pertanyaan', [PenerimaanController::class, 'pertanyaan'])->name('pertanyaan');
+
+  Route::get('jwbpertanyaan', [PenerimaanController::class, 'jawabanwawancara'])->name('jwbpertanyaan');
+
+
+    // Route::resource('uploadberkas', PenerimaanController::class);
+  });
 
 Route::middleware(['login', 'role:admin,user'])->group(function () {
   Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');

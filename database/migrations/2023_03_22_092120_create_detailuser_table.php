@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('nohp_ibu', 255)->nullable();
             $table->date('tgl_lahir')->nullable();
             $table->string('tempat_lahir', 255)->nullable();
+            $table->text('alamat', 255)->nullable();
             $table->string('agama', 255)->nullable();
             $table->string('jurusan', 255)->nullable();
             $table->string('nama_ayah', 255)->nullable();
@@ -32,6 +33,8 @@ return new class extends Migration
             $table->string('nama_ibu', 255)->nullable();
             $table->string('pekerjaan_ibu', 255)->nullable();
             $table->string('penghasilan_ibu', 255)->nullable();
+            $table->string('file', 255)->nullable();
+            $table->enum('data', ['Kosong','Tuntas'])->default('Kosong');
             $table->timestamps();
         });
     }

@@ -15,15 +15,15 @@
         </div>
 
         @if (isset($item->status))
-            @if ($item->status == 3)
+            @if ($item->status == 'Aktif')
                 <div class="alert alert-warning">
                     Pembayaran sedang diverifikasi, harap tunggu informasi selanjutnya
                 </div>
-            @elseif($item->status == 1)
+            @elseif($item->status == 'Nonaktif')
                 <div class="alert alert-info">
                     Pembayaran sudah diverifikasi
                 </div>
-            @else($item->status == 2)
+            @else($item->status == 'Pending')
                 <div class="alert alert-danger">
                     Pembayaran ditolak, Silahkan Melakukan Pembayaran Ulang
                 </div>

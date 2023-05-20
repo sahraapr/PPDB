@@ -93,6 +93,14 @@
                             <li class="nav-item dropdown">
                                 <a href="/data-diri"><i class="fas fa-money-bill"></i> <span>Data Diri</span></a>
                             </li>
+
+                            <li class="nav-item dropdown">
+                                <a href="/pertanyaan"><i class="fas fa-money-bill"></i> <span>Isi Pertanyaan</span></a>
+                            </li>
+                            
+                            <li class="nav-item dropdown">
+                                <a href=""><i class="fas fa-money-bill"></i> <span>Daftar Ulang</span></a>
+                            </li>
                         @endif
 
                         @if (Auth::check() && Auth::user()->role == 'admin')
@@ -100,12 +108,20 @@
                                 <a href="/verification"><i class="fas fa-regular fa-table"></i>
                                     <span>Verifikasi</span></a>
                             </li>
-                        @endif
-                        @if (Auth::check() && Auth::user()->role == 'admin')
+
+                            <li class="nav-item dropdown">
+                                <a href="{{ route('jawabansiswa') }}"><i class="fas fa-solid fa-list"></i> <span>Wawancara Siswa</span></a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a href="{{ route('pertanyaan-wawancara.index') }}"><i class="fas fa-solid fa-list"></i> <span>Pertanyaan</span></a>
+                            </li>
+
                             <li class="nav-item dropdown">
                                 <a href="/student-list"><i class="fas fa-solid fa-list"></i> <span>Siswa</span></a>
                             </li>
                         @endif
+                        
                     </ul>
                 </aside>
             </div>

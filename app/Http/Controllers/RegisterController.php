@@ -32,6 +32,7 @@ class RegisterController extends Controller
             'name' => 'required',
             'tgl_lahir' => 'required',
             'tempat_lahir' => 'required',
+            'alamat' => 'required',
             'agama' => 'required',
             'nohp' => 'required',
         ]);
@@ -55,6 +56,7 @@ class RegisterController extends Controller
             'tgl_lahir' => $request->tgl_lahir,
             'tempat_lahir' => $request->tempat_lahir,
             'agama' => $request->agama,
+            'alamat' => $request->alamat,
             'jurusan' => $request->jurusan,
             'nama_ayah' => $request->nama_ayah,
             'pekerjaan_ayah' => $request->pekerjaan_ayah,

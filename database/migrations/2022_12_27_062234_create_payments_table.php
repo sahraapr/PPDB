@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->bigInteger('user_id');
             $table->string('nominal')->nullable();
-            $table->boolean('status')->nullable();
+            // $table->boolean('status')->nullable();
+            $table->enum('status', ['Aktif','Nonaktif','Pending'])->default('Aktif');
             $table->string('image')->nullable();
             $table->timestamps();
         });

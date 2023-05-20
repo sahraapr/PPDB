@@ -39,7 +39,7 @@ class AdminController extends Controller
 
   public function indexVerification()
   {
-    $data = Payment::with('user')->paginate('5');
+    $data = Payment::where('status', '=', 'Aktif')->get();
     return view('admin.verification', compact('data'));
   }
 
@@ -54,7 +54,7 @@ class AdminController extends Controller
   {
     // User::where('user_id', $user_id)->update(['progress' => 'Pembayaran berhasil divalidasi']);
     Payment::where('user_id', $user_id)->update([
-      'status' => 1
+      'status' => 'Nonaktif'
     ]);
     return redirect()->back()->with("message", "Data Berhasil Divalidasi");
   }
@@ -63,7 +63,7 @@ class AdminController extends Controller
   {
     // User::where('user_id', $user_id)->update(['progress' => 'Pembayaran Ditolak']);
     Payment::where('user_id', $user_id)->update([
-      'status' => 2
+      'status' => 'Pending'
     ]);
     return redirect()->back()->with("message", "Data Tidak Divalidasi, Silahkan Coba Lagi");
   }
@@ -108,7 +108,7 @@ class AdminController extends Controller
       'name' => $request->name,
       'nominal' => $request->nominal,
       'image' => $filenameSave,
-      'status' => 3
+      'status' => 'Aktif'
     ]);
     return redirect()->route('indexPayment')->with('success', 'Pembayaran Berhasil Dilakukan');
   }
